@@ -1,27 +1,14 @@
 #include<stdio.h>
-
 int main ()
 {
+int n;
+    scanf("%d", &n);
 
-    int month, year;
-    printf("Enter a month and year: ");
-    scanf("%d %d", &month, &year);
-
-    if(month == 2)
+    int i, j, sum = 0;
+    for(i=1,j=2 ; i <= n; i++, j++)
     {
-        if((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0)
-        {
-            printf("YES LEAP YEAR\n");
-
-        }
-        else
-             printf("NOT LEAP YEAR\n");
+        sum = sum + (i*i*j);
     }
-    else
-    {
-       printf("NOT FEBruary") ;
-    }
-
-
+    printf("sum: %d", sum);
     return 0;
 }
