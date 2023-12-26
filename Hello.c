@@ -1,14 +1,17 @@
 #include<stdio.h>
+
+
 int main ()
 {
-int n;
-    scanf("%d", &n);
+    int x;
+    scanf("%d", &x);
 
-    int i, j, sum = 0;
-    for(i=1,j=2 ; i <= n; i++, j++)
-    {
-        sum = sum + (i*i*j);
-    }
-    printf("sum: %d", sum);
+    if(x % 2 == 0 && x != 2)
+        printf("YES\n");
+    else printf("NO\n");
+
     return 0;
 }
+
+
+

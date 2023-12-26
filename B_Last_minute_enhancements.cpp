@@ -4,7 +4,7 @@ using ll = long long;
 using ull = unsigned long long;
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
-#define nl "\n";
+#define nl "\n"
 
 
 
