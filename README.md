@@ -1,17 +1,4 @@
-<!-- README.md -->
-
 # Codeforces Submissions
-
-<div style="display: flex; align-items: center;">
-  <img src="https://codeforces.org/s/12294/images/codeforces-sponsored-by-ton.png" alt="Codeforces Logo" width="50" height="50" style="margin-right: 10px;">
-  <div>
-    <h3 style="margin: 0;">C C++ Python</h3>
-    <p style="margin: 0; font-size: 0.8em;">Solutions to Codeforces problems</p>
-  </div>
-</div>
-
-<!-- Rest of your README content -->
-
 
 ![Codeforces Logo](https://codeforces.org/s/12294/images/codeforces-sponsored-by-ton.png)
 
