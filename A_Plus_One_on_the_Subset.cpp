@@ -13,11 +13,18 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(0);
     
-    ll x;
-    cin>>x;
-    ll count = 0;
-    cout<<__builtin_popcount(x)<<nl;
-
+    ll t;
+    cin>>t;
+    while (t--)
+    {
+        ll n;
+        cin>>n;
+        ll arr[n];
+        for(ll i= 0; i < n;i++)
+            cin>>arr[i];
+        sort(arr,arr+n);
+        cout<<arr[n-1]-arr[0]<<nl;
+    }
     
     return 0;
 }

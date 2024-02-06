@@ -13,11 +13,21 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(0);
     
-    ll x;
-    cin>>x;
-    ll count = 0;
-    cout<<__builtin_popcount(x)<<nl;
+    ll t;
+    cin>>t;
+    while (t--)
+    {
+        ll x, y, n;
 
+        cin>>x>>y>>n;
+        ll ans = n/ x;
+        ans *= x;
+        ans += y;
+        if(ans <=n)
+            cout<<ans<<nl;
+        else
+            cout<<ans - x <<nl;
+    }
     
     return 0;
 }
