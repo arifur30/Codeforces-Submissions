@@ -1,21 +1,12 @@
 #include<stdio.h>
 
-int main ()
+int main()
 {
-    // input output
-    int arr1[16];
-    for(int i = 0; i < 16; i++)
-        scanf("%d", &arr1[i]);
 
-    printf("\nThe array elements are: ");
+    int a = 1;
+    a = a++ * a--;
 
-    for(int i = 0; i<16; i++)
-    {
-        printf("%d ", arr1[i]);
-    }
 
-    return 0;
+    printf("Minimum element: %d\n", a);
+
 }
-
-
-
