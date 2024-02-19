@@ -7,7 +7,7 @@ using ull = unsigned long long;
 #define NO cout << "NO\n"
 #define nl "\n"
 #define arrin(arr, n) for(ll i = 0; i < n; i++) cin>>arr[i]
-#define arrout(arr, n) for(ll i = 0; i < n; i++) cout<<arr[i]<<" "; cout<<nl
+#define arrout(arr, n) for(ll i = 0; i < n; i++) cout<<arr[i]<<" "
 
 
 
@@ -17,20 +17,27 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    ll n;
-    cin>>n;
-    ll cnt = 0, sum = 0;
-    for(ll i =1 ; i<=n;i++)
+    ll t;
+    cin>>t;
+    while (t--)
     {
-        sum += i;
-        n -= sum;
-        if(n < 0)
+        string s;
+        cin>>s;
+        int A = 0, B = 0;
+        for(ll i=0;i<5;i++)
         {
-            break;
+            if(s[i] == 'A')
+                A++;
+            else
+                B++;
         }
-        else cnt++;
+        if(A > B)
+            cout<<"A"<<nl;
+        else if(B > A)
+            cout<<"B"<<nl;
+    
+        
     }
-    cout<<cnt<<nl;
     
     return 0;
 }

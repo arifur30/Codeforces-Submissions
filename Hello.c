@@ -3,10 +3,13 @@
 int main()
 {
 
-    int a = 1;
-    a = a++ * a--;
+    int n,even = 2, odd = 3;
+    float sum =1;
+    printf("Enter a number: ");
+    scanf("%d", &n);
 
+    for(int i = 2; i <= n; i++)
+        sum += 1.0/i;
 
-    printf("Minimum element: %d\n", a);
-
+    printf("answer: %f\n",sum);
 }
