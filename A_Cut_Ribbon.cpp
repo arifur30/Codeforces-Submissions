@@ -17,6 +17,8 @@ int main()
     cin >> n >> a >> b >> c;
     ll ans = 0;
     
+
+    
     return 0;
 }
     

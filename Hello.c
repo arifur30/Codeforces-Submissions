@@ -2,14 +2,28 @@
 
 int main()
 {
+    int arr[] = {10,20, 10 , 10, 100}, size = 5;
 
-    int n,even = 2, odd = 3;
-    float sum =1;
-    printf("Enter a number: ");
-    scanf("%d", &n);
+    for(int i = 0; i < size; i++)
+    {
 
-    for(int i = 2; i <= n; i++)
-        sum += 1.0/i;
+        for(int j = i+1; j<size ; j++)
+        {
 
-    printf("answer: %f\n",sum);
+            if(arr[i] == arr[j])
+            {
+                for(int k = j; k < size-1; k++)
+                {
+
+                    arr[k] = arr[k+1];
+                    size--;
+                    j--;
+                }
+            }
+        }
+    }
+
+    for(int i =0; i< 5; i++)
+        printf("%d ", arr[i]);
+
 }

@@ -16,7 +16,10 @@ void cout_v_int(vector<int> &v)
     cout<<'\n';
 }
 
-
+bool is_vowel(char c)
+{
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
 
 
 int main()
@@ -30,44 +33,61 @@ int main()
     {
         int n;
         cin>>n;
-        char s[n+1];
+        string s;
         cin>>s;
-        cout<<s<<nl;
-        vector<int>v1;
-
-        for(int i = n-1; i >= 1; )
+        if(n<=2)
         {
-            if((s[i] == 'a' || s[i] == 'e') && i != 1)
+            cout<<s<<nl;
+            continue;
+        }
+        ll arr[n+1] = {0};
+        for(ll i = n-2; i>=1;i--)
+        {
+            if(i == n-2)
             {
-                i -= 2;
-                v1.push_back(i);
+                if(!is_vowel(s[i-1]) && is_vowel(s[i]) && !is_vowel(s[i+1]))
+                {
+                    arr[i-1] = 1;
+                    i--;
+                }
+                else
+                {
+                    arr[i] = 1;
+                    continue;
+                }
+
             }
             else{
-                if(i- 3 >= 1)
-                    {
-                        i -= 3;
-                        v1.push_back(i);
-                    }
-                else i -= 3;
+                if(!is_vowel(s[i]))
+                {
+                    arr[i-2] = 1;
+                    i -=2;
+                }
+                else
+                {
+                    arr[i-1] = 1;
+                    i--;
+                }
             }
+            
+             
+            
+            
+            
         }
-        sort(v1.begin(), v1.end());
-        cout_v_int(v1);
-        for(int i = 0, j  = 0; i < n; i++)
+        for(ll i = 0; i<n;i++)
         {
-            if(i == v1[j])
+            if(arr[i]>0 && i != 0)
             {
-                cout<<'.';
-                j++;
-                cout<<s[i];
+                cout<<"."<<s[i];
             }
             else
+            {
                 cout<<s[i];
+            }
         }
-        cout<<nl;
-        
+    cout<<nl;
     }
-    
     return 0;
 }
     
