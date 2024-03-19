@@ -33,7 +33,7 @@ int main()
         fr(i,n)
             cin>>arr[i],
             (arr[i] % 2) ? odd++ : ev++;
-        if((odd ==0 && ev) or (!ev && odd) )
+        if((odd ==0 && ev) or (!ev && odd%2 == 0) )
             YES;
         // else if(n == 2 && odd && ev)
         //     NO;
