@@ -1,29 +1,20 @@
 #include<stdio.h>
+#include<string.h>
 
 int main()
 {
-    int arr[] = {10,20, 10 , 10, 100}, size = 5;
+    char str[100] = "Hello World! ";
+    char cpy[100] = "String Class - 1";
 
-    for(int i = 0; i < size; i++)
-    {
+    for(int i = 0; i < strlen(str); i++)
+   {
 
-        for(int j = i+1; j<size ; j++)
-        {
+       if(i % 2 == 0)
+            printf("*");
+        else
+            printf("%c", str[i]);
+   }
 
-            if(arr[i] == arr[j])
-            {
-                for(int k = j; k < size-1; k++)
-                {
 
-                    arr[k] = arr[k+1];
-                    size--;
-                    j--;
-                }
-            }
-        }
-    }
-
-    for(int i =0; i< 5; i++)
-        printf("%d ", arr[i]);
-
+   printf("\n\n%s", str);
 }
