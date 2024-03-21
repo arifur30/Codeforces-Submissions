@@ -2,6 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "B_Ten_Words_of_Wisdom",
+      "request": "launch",
+      "mainClass": "B_Ten_Words_of_Wisdom",
+      "projectName": "C.F submissions_8198a412"
+    },
+    {
+      "type": "java",
+      "name": "CWordonthePaper",
+      "request": "launch",
+      "mainClass": "CWordonthePaper",
+      "projectName": "C.F submissions_8198a412"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",

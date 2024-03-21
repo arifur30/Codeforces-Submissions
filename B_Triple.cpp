@@ -11,18 +11,9 @@ using ull = unsigned long long;
 #define arrin2(arr, b, n) for(ll i = 0; i < n; i++) {cin>>arr[i];b[i] = arr[i];}
 #define arr2Din(arr, n, m) for(ll i = 0; i < n; i++) for(ll j = 0; j < m; j++) cin>>arr[i][j]
 #define fr(i, n) for(ll i = 0; i < n; i++)
+#define frr(i,n) for(ll i = n-1; i >= 0; i--)
 #define pb push_back
 #define vll vector<ll>
-
-
-void cout_v_int(vector<ll> &v)
-{
-    for(auto it = v.begin(); it != v.end(); it++) 
-    {
-        cout << *it <<" ";   // for printing the vector
-    }
-    cout<<'\n';
-}
 
 
 int main()
@@ -35,42 +26,27 @@ int main()
     cin>>t;
     while (t--)
     {
-        
-        ll n , mAx = 0;
+        map<ll,ll> mp;
+        ll n, tem;
         cin>>n;
-        vll arr(n);
-        arrin(arr, n);
-        bool flag = true;
-
         fr(i,n)
         {
-            if(arr[i] < mAx)
+            cin>>tem;
+            mp[tem]++;
+        
+        }
+        bool f = false;
+        for(auto it: mp)
+        {
+            if(it.second >= 3)
             {
-                NO;
-                flag = false;
+                cout<<it.first<<nl;
+                f = true;
                 break;
             }
-
-            if(arr[i] >= 10)
-            {
-                if(arr[i] / 10 <= arr[i] % 10 && arr[i]/10 >= mAx)
-                {
-                    mAx = arr[i] % 10;
-                }
-                else
-                {
-                    mAx = arr[i];
-                }
-            }
-            else
-            {
-                mAx = arr[i];
-            }
         }
-
-        if(flag)
-            YES;
-        
+        if(!f)
+            cout<<-1<<nl;
     }
     
     return 0;
