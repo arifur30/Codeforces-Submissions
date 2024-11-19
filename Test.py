@@ -1,59 +1,88 @@
-import turtle
+def calculate(expression):
+    """
+    Evaluates a mathematical expression string with support for addition, subtraction,
+    multiplication, division, parentheses, and operator precedence.
 
-# Set up the turtle
-turtle.speed(1)
-turtle.pensize(2)
+    Args:
+        expression: A string representing the mathematical expression.
 
-# Draw Spider's Body
-turtle.color('black', 'black')
-turtle.begin_fill()
-turtle.circle(50)
-turtle.end_fill()
+    Returns:
+        The result of the evaluated expression.
 
-# Draw Spider's Eyes
-turtle.penup()
-turtle.goto(-15, 60)
-turtle.pendown()
-turtle.color('white', 'white')
-turtle.begin_fill()
-turtle.circle(10)
-turtle.end_fill()
+    Raises:
+        ValueError: If the expression is invalid (e.g., misplaced operators or parentheses).
+    """
 
-turtle.penup()
-turtle.goto(25, 60)
-turtle.pendown()
-turtle.begin_fill()
-turtle.circle(10)
-turtle.end_fill()
+    if not expression:
+        return ""
 
-# Draw Spider's Legs
-def draw_leg(start_pos, end_pos):
-    turtle.penup()
-    turtle.goto(start_pos)
-    turtle.pendown()
-    turtle.forward(end_pos[0] - start_pos[0])
-    turtle.backward(end_pos[0] - start_pos[0])
-    turtle.right(90)
-    turtle.forward(end_pos[1] - start_pos[1])
-    turtle.backward(end_pos[1] - start_pos[1])
-    turtle.left(90)
+    def find_closing_parenthesis(expr, start_index):
+        """Helper function to find the matching closing parenthesis."""
+        count = 1
+        for i in range(start_index + 1, len(expr)):
+            if expr[i] == '(':
+                count += 1
+            elif expr[i] == ')':
+                count -= 1
+                if count == 0:
+                    return i
+        raise ValueError("Mismatched parentheses")
 
-legs = [
-    ((-50, 0), (-100, -100)),
-    ((-50, 0), (-75, -100)),
-    ((-50, 0), (-50, -100)),
-    ((50, 0), (100, -100)),
-    ((50, 0), (75, -100)),
-    ((50, 0), (50, -100)),
-    ((-15, 0), (-25, -40)),
-    ((25, 0), (25, -40))
-]
+    def evaluate_expression(expr):
+        """Evaluates the expression considering operator precedence."""
+        nums = []
+        ops = []
+        i = 0
 
-for leg in legs:
-    draw_leg(*leg)
+        def compute():
+            if not nums or not ops:
+                return
+            num2 = nums.pop()
+            num1 = nums.pop()
+            op = ops.pop()
+            if op == '+':
+                nums.append(num1 + num2)
+            elif op == '-':
+                nums.append(num1 - num2)
+            elif op == '*':
+                nums.append(num1 * num2)
+            elif op == '/':
+                if num2 == 0:
+                    raise ValueError("Division by zero")
+                nums.append(num1 // num2)
 
-# Hide the turtle
-turtle.hideturtle()
+        while i < len(expr):
+            char = expr[i]
 
-# Keep the window open until it's manually closed
-turtle.done()
+               
+            if char==' ':
+                i += 1
+                continue
+            if char.isdigit() or char == '.':
+                start = i
+                while i < len(expr) and (expr[i].isdigit() or expr[i] == '.'):
+                    i += 1
+                nums.append(float(expr[start:i]))
+                continue
+            elif char == '(':
+                end = find_closing_parenthesis(expr, i)
+                nums.append(evaluate_expression(expr[i + 1:end]))
+                i = end
+            elif char in '+-':
+                while ops and ops[-1] in "*/":
+                    compute()
+                ops.append(char)
+            elif char in "*/":
+                while ops and ops[-1] in "*/":
+                    compute()
+                ops.append(char)
+            i += 1
+
+        while ops:
+            compute()
+        return nums[0] if nums else 0
+
+    if expression.isdigit() or (expression.startswith("-") and expression[1:].replace(".", "", 1).isdigit()):
+        return float(expression)
+
+    return evaluate_expression(expression)

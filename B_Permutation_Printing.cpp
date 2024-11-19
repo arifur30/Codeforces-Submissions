@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 using ll = long long;
 using ull = unsigned long long;
 #define YES cout << "YES\n"
@@ -9,7 +10,20 @@ using ull = unsigned long long;
 #define arrin(arr, n) for(ll i = 0; i < n; i++) cin>>arr[i]
 #define arrout(arr, n) for(ll i = 0; i < n; i++) cout<<arr[i]<<" ";cout<<nl
 
+// Function to implement the Sieve of Eratosthenes
+vector<bool> sieveOfEratosthenes(long long n) {
+    vector<bool> prime(n+1, true);
+    prime[0] = prime[1] = false;
+    for (long long p = 2; p*p <= n; p++) {
+        if (prime[p] == true) {
+            for (long long i = p*p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+    return prime;
+}
 
+vector<bool> prime = sieveOfEratosthenes(1e5+7);
 
 int main()
 {
@@ -23,18 +37,19 @@ int main()
     {
         ll n;
         cin>>n;
-        for(ll i = 1; i<=n;i++)
+        for(ll i= n; i >= 1; i--)
         {
-            if(i == 2)
-                cout<<3<<" ";
-            else if(i == 3)
-                cout<<2<<" ";
-            else cout<<i<<" ";
+            if(!prime[i])
+                cout << i << " ";
+        }
+        for(ll i = 1; i <= n; i++)
+        {
+            if(prime[i])
+                cout << i << " ";
         }
         cout<<nl;
     }
-    cout<<fixed<<setprecision(10);
-    cerr<<"Time:"<<1000*((double)clock())/(double)CLOCKS_PER_SEC<<"ms\n";
+
     return 0;
 }
 

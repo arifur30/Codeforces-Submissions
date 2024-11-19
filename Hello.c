@@ -1,20 +1,20 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
 
 int main()
 {
-    char str[100] = "Hello World! ";
-    char cpy[100] = "String Class - 1";
 
-    for(int i = 0; i < strlen(str); i++)
-   {
+    int arr[6] = {0};
+// 7 7 7 7 7 7
+    int i;
 
-       if(i % 2 == 0)
-            printf("*");
-        else
-            printf("%c", str[i]);
-   }
+    for(i = 0; i < 5; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+// 1 2 3 4 5 7
+
+    printf("%d ", arr[5]);      // arr[5]   arr[4]
 
 
-   printf("\n\n%s", str);
+
 }
