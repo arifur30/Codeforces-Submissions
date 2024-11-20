@@ -45,10 +45,25 @@ int main()
         
         ll n;
         cin >> n;
-        for(
+        
+        if(n < 5)
+        {
+            cout << -1 <<nl;
+            continue;
+        }
 
-             
-        )
+        for(ll i = 1; i <= n; i+=2)
+        {
+            if(i==5) continue;
+            cout << i  << " ";
+        }
+        cout << "5 4 ";
+        for(ll i = 2;  i <= n; i+=2)
+        {
+            if(i == 4) continue;
+            cout <<i << " ";
+        }
+        cout << nl;
     }
     
     return 0;
