@@ -17,23 +17,24 @@ int main()
     cin>>t;
     while (t--)
     {
-        ll n , x, y;
+        ll n , x, y, cnt = 0;
         cin>>n>>x>>y;
-        ll arr[n], cnt = 0;
-        arrin(arr, n);
-        for(ll i =0;i<n;i++)
+        map< pair<ll,ll> , ll> mp;
+        ll a;
+        for(ll i=0;i<n;i++)
         {
-            for(ll j = i+1; j<n; j++)
+            
+            cin >> a;
+            ll xx = a%x;
+            if(mp.find(make_pair((x-xx) %x, a%y)) != mp.end())
             {
-                ll a= arr[i] + arr[j];
-                ll b = abs(arr[i] - arr[j]);
-                if(a%x == 0 && b%y == 0)
-                {
-                    cnt++;
-                }
+                cnt += mp[make_pair( (x-xx)%x, a%y)];
+                
             }
+            ++mp[make_pair(a%x, a%y)];
         }
         cout<<cnt<<nl;
+        
     }
     
     return 0;

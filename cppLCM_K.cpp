@@ -28,7 +28,27 @@ ll powermod(ll b,ll e,ll M) {
 
 int main()
 {
+ ll n,k;
+ cin>>n>>k;
+ string s;
+ cin>>s;
+ while(k--){
+    string ss;
+    map<char,ll>mp;
+    for(ll i=0;i<ss.size();i++){
+        mp[ss[i]]+=i+1;
+    }
+    ll m=0;
+    char cx;
+    for(auto it:mp){
+        if(it.second>m){
+            m=it.second;
+            cx=it.first;
+        }
+    }
+    for(ll i=0;i<s.size();i++)
 
 
+
+ }
 }
-
