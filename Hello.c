@@ -3,18 +3,17 @@
 int main()
 {
 
-    int arr[6] = {0};
-// 7 7 7 7 7 7
+    int sum = 0;
+
     int i;
 
-    for(i = 0; i < 5; i++)
+    for(i = 1; i <= 10; i++)
     {
-        scanf("%d", &arr[i]);
+
+        sum += i; // 0+1+2+3+4+5+6+7+8+9+10
     }
-// 1 2 3 4 5 7
 
-    printf("%d ", arr[5]);      // arr[5]   arr[4]
-
+    printf("%d", sum);
 
 
 }

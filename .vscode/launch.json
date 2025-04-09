@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "StudentGradeTracker",
+      "request": "launch",
+      "mainClass": "StudentGradeTracker",
+      "projectName": "C.F submissions_8198a412"
+    },
+    {
+      "type": "java",
       "name": "B_Ten_Words_of_Wisdom",
       "request": "launch",
       "mainClass": "B_Ten_Words_of_Wisdom",

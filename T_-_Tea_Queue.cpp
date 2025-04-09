@@ -47,6 +47,7 @@ int main()
                 ans.pb(0);
             
             }
+            
         }
         arrout(ans, n);
 

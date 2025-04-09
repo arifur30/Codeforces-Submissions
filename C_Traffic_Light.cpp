@@ -1,84 +1,58 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-using ll = long long;
-using ull = unsigned long long;
-#define YES cout << "YES\n"
-#define NO cout << "NO\n"
-#define nl "\n"
-#define arrin(arr, n) for(ll i = 0; i < n; i++) cin>>arr[i]
-#define arrout(arr, n) for(ll i = 0; i < n; i++) cout<<arr[i]<<" ";cout<<nl
-#define arrin2(arr, b, n) for(ll i = 0; i < n; i++) {cin>>arr[i];b[i] = arr[i];}
-#define arr2Din(arr, n, m) for(ll i = 0; i < n; i++) for(ll j = 0; j < m; j++) cin>>arr[i][j]
-#define fr(i, n) for(ll i = 0; i < n; i++)
-#define frr(i,n) for(ll i = n-1; i >= 0; i--)
-#define pb push_back
-#define vll vector<ll>
-#define MOD 1000000007
-#define all(x) x.begin(), x.end()
+
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-
-    ll t;
-    cin>>t;
+    long long t;
+    cin >> t;
     while (t--)
     {
-        ll n, first_green = -1;
+        long long n, first_green_position = -1;
         char ch;
         cin >> n >> ch;
-        set <ll> dist;
+        set<long long> distances;
 
         string s;
         cin >> s;
 
-        fr(i,n)
+        for (long long i = 0; i < n; i++)
         {
-            if(s[i] == 'g' && first_green == -1)
+            if (s[i] == 'g' && first_green_position == -1)
             {
-                first_green = i;
+                first_green_position = i;
                 break;
             }
-            
         }
 
-        for(ll i = n-1; i >= 0; i--)
+        for (long long i = n - 1; i >= 0; i--)
         {
-            if(s[i] == 'g') first_green = i;
-            else if(s[i] == ch)
+            if (s[i] == 'g')
             {
-                if(i > first_green) 
-                    dist.insert(first_green + (n-i));
+                first_green_position = i;
+            }
+            else if (s[i] == ch)
+            {
+                if (i > first_green_position)
+                {
+                    distances.insert(first_green_position + (n - i));
+                }
                 else
-                    dist.insert(first_green - i);
+                {
+                    distances.insert(first_green_position - i);
+                }
             }
         }
 
-        if(ch == 'g')
+        if (ch == 'g')
         {
-            cout << 0 << nl;
+            cout << 0 << "\n";
             continue;
         }
-      
-        // cout << "first green: " << first_green << nl;
-        // cout << "dist: ";
-        // for(auto i: dist)
-        // {
-        //     cout << i << " ";
-        // }
-        // cout << nl;
 
-        cout << *dist.rbegin() << nl;
-        
+        cout << *distances.rbegin() << "\n";
     }
-    
+
     return 0;
 }
-
-
-
-
-// .... . -.-- / ... .. .-.. . -. - / ..-. .- -. / --- ..-. / -- .. -. .
