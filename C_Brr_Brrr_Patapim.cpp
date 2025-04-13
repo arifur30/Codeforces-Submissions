@@ -27,31 +27,34 @@ int main()
     cin>>t;
     while (t--)
     {
-        
-        ll n , k;
-        cin >> n >> k;
-
-        if(n == 1)
+        ll n;
+        cin >> n;
+        unordered_map<ll, ll> mp;
+        vll arr(2*n + 1);
+        ll sum = 0;
+        for(ll i = 0; i < n; i++)
         {
-            if(k == 2) YES;
-            else NO;
-        }
-        else if(k == 1)
-        {
-            bool flag = false;
-            for(ll i = 2; i*i <= n; i++)
+            for(ll j = 0; j < n; j++)
             {
-                if(n % i == 0)
+                cin >> arr[i + j+1];
+             //   high = max(high, arr[i + j+1]);
+                if(mp[arr[i+j+1]] != 1)
                 {
-                    NO;
-                    flag = true;
-                    break;
+                    sum += arr[i+j+1];
+                    mp[arr[i+j+1]] = 1;
                 }
-                
             }
-            if(!flag) YES;
         }
-        else NO;
+
+      //  cout << sum << nl;
+        ll high = n*2;
+        arr[0] = (high*(high+1))/2 - sum;
+        for(ll i = 0; i < 2*n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << nl;
+        
     }
     
     return 0;

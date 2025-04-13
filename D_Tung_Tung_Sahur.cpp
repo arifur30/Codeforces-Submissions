@@ -27,30 +27,37 @@ int main()
     cin>>t;
     while (t--)
     {
+        string a, b;
+        cin >> a >>b;
         
-        ll n , k;
-        cin >> n >> k;
+        bool flag = true;
+        ll i = a.size() - 1, j  = b.size()-1;
+        
+        for(; i >= 0 && j >= 0; i--)
+        {
+            
+            
 
-        if(n == 1)
-        {
-            if(k == 2) YES;
-            else NO;
-        }
-        else if(k == 1)
-        {
-            bool flag = false;
-            for(ll i = 2; i*i <= n; i++)
+            if(a[i] == b[j])
             {
-                if(n % i == 0)
+                j--;
+                if(j == i && b[j] == a[i])
                 {
-                    NO;
-                    flag = true;
-                    break;
-                }
-                
+                    j--;
+                } 
+                else if(j > i && b[j] == a[i]) j--;
             }
-            if(!flag) YES;
+
+            else
+            {
+                flag = false;
+                break;
+            }
         }
+
+    //    cout << i << " " << j << nl;
+
+        if(flag && i < 0 && j < 0) YES;
         else NO;
     }
     

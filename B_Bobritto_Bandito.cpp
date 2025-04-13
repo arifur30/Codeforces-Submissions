@@ -27,31 +27,13 @@ int main()
     cin>>t;
     while (t--)
     {
-        
-        ll n , k;
-        cin >> n >> k;
+        ll n , m , l , r;
+        cin >> n >> m >> l >> r;
 
-        if(n == 1)
-        {
-            if(k == 2) YES;
-            else NO;
-        }
-        else if(k == 1)
-        {
-            bool flag = false;
-            for(ll i = 2; i*i <= n; i++)
-            {
-                if(n % i == 0)
-                {
-                    NO;
-                    flag = true;
-                    break;
-                }
-                
-            }
-            if(!flag) YES;
-        }
-        else NO;
+        l = ceil((l*m*1.0)/n);
+        r = ceil((r*m*1.0)/n);
+        cout << l << " " << r << nl;
+        
     }
     
     return 0;

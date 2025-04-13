@@ -27,31 +27,10 @@ int main()
     cin>>t;
     while (t--)
     {
+        string a,b,c;
+        cin >> a >> b >> c;
+        cout << a[0] << b[0] << c[0] << nl;  
         
-        ll n , k;
-        cin >> n >> k;
-
-        if(n == 1)
-        {
-            if(k == 2) YES;
-            else NO;
-        }
-        else if(k == 1)
-        {
-            bool flag = false;
-            for(ll i = 2; i*i <= n; i++)
-            {
-                if(n % i == 0)
-                {
-                    NO;
-                    flag = true;
-                    break;
-                }
-                
-            }
-            if(!flag) YES;
-        }
-        else NO;
     }
     
     return 0;
