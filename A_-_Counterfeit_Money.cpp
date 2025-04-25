@@ -27,40 +27,50 @@ int main()
     cin>>t;
     while (t--)
     {
-        string a, b;
-        cin >> a >> b;
         
-        bool flag = true;
-        size_t i = 0, j = 0;
-        
-        while(i < a.size())
-        { 
-            char ch = a[i];
-            ll cnt1 = 0, cnt2 = 0;
-            while(i < a.size() && ch == a[i])
-            {
-                cnt1++;
-                i++;
-            }
-            
+        string s;
+        cin >> s;
 
-            while(j < b.size() && ch == b[j])
-            {
-                cnt2++;
-                j++;
-            }
+        bool f = true;
+        ll sum = 0, main = 0, cnt = 0;
+        for(ll i = s.size()-1; i >= 0; i--)
+        {
+            cnt++;
 
-            if(cnt2 > 2*cnt1 || cnt2 < cnt1)
+            if(cnt == 1)
             {
-             
-                flag = false;
-                break;
+                sum += s[i] - '0';
+            }
+            else if(cnt == 2)
+            {
+                sum += (s[i] - '0')*10;
+            }
+            else if(cnt == 3)
+            {
+                sum += (s[i]-'0')*100;
+                cnt = 0;
+                if(f)
+                {
+                    main += sum;
+                    f = false;
+                    
+                }
+                else
+                {
+                    main -= sum;
+                    f = true;
+                }
+                sum  = 0;
             }
         }
-
-        if(flag && j == b.size()) YES;
+        if(cnt != 0)
+        {
+            if(f) main += sum;
+            else main -= sum;
+        }
+        cout << abs(main) << " ";
+        if(main% 13 == 0) YES;
         else NO;
-        
     }
     
     return 0;

@@ -27,39 +27,23 @@ int main()
     cin>>t;
     while (t--)
     {
-        string a, b;
-        cin >> a >> b;
-        
-        bool flag = true;
-        size_t i = 0, j = 0;
-        
-        while(i < a.size())
-        { 
-            char ch = a[i];
-            ll cnt1 = 0, cnt2 = 0;
-            while(i < a.size() && ch == a[i])
-            {
-                cnt1++;
-                i++;
-            }
-            
+        int n; cin >> n;
+        string s;
+        cin >> s;
 
-            while(j < b.size() && ch == b[j])
-            {
-                cnt2++;
-                j++;
-            }
+        unordered_map<ll, ll > mp;
+        ll ans = 0, sum = 0;
 
-            if(cnt2 > 2*cnt1 || cnt2 < cnt1)
-            {
-             
-                flag = false;
-                break;
-            }
+        mp[0] = 1;
+
+        for(ll i = 0; i < n; i++)
+        {
+            sum += s[i] -'0';
+            ans += mp[sum - i - 1];
+            mp[sum - i - 1]++;
         }
 
-        if(flag && j == b.size()) YES;
-        else NO;
+        cout << ans << nl;
         
     }
     
