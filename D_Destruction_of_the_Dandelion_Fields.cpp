@@ -27,15 +27,52 @@ int main()
     cin>>t;
     while (t--)
     {
-        ll a, b, c,d;
-        cin >> a >> b >> c >> d;
+        
+        ll n,even_sum = 0, sum = 0;
+        cin >> n;
 
-        if(d > c && b*c> a)
+        vector<ll> odd;
+
+        fr(i,n)
         {
-            cout << a << nl;
+            ll temp;
+            cin >> temp;
+            if(temp % 2 == 0) even_sum += temp;
+            else odd.pb(temp);
         }
 
+        sort(odd.begin(), odd.end());
         
+        
+
+        bool machine = false, even = true;
+
+        for(ll i = 0, j = odd.size()-1; i < odd.size() && j >= 0 && i <= j; )
+        {
+            
+            if(machine == false)
+            {
+                sum += odd[j];
+                if(even)
+                {
+                    even = false;
+                    sum += even_sum;
+                }
+                j--;
+                machine = true;
+            }
+            else {
+                i++;
+                machine = false;
+            }
+            
+        }
+        
+        
+
+        cout << sum << nl;
+
+      
     }
     
     return 0;

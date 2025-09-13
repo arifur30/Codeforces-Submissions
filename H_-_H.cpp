@@ -2,7 +2,6 @@
 using namespace std;
 
 using ll = long long;
-using ull = unsigned long long;
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
 #define nl "\n"
@@ -17,54 +16,65 @@ using ull = unsigned long long;
 #define MOD 1000000007
 #define all(x) x.begin(), x.end()
 
+
+ll sub(ll num, ll minus)
+{
+
+    // cout << "num: " << num << nl;
+    // cout << "minus : " << minus << nl;
+    if(minus % 10 == 0) return num;
+
+    ll b = minus % 10;
+
+    
+    if(b > num)
+    {
+        b -= num;
+        num = 10;
+        num -= b;
+        
+
+    }
+    else num -= b;
+
+  //  cout << "new num: " << num << nl;
+    return num;
+
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
 
-    int t, H, S;
-    cin>>t >> H >> S;
-    vector<pair<int, pair<int,int>>> v;
-    while (t--)
+    ll sum  = 0;
+    string n;
+    cin >> n;
+
+    ll i = n.size() - 1;
+    sum  += ((n[i] - '0')% 10);
+    ll minus = sum;
+    sum++;
+
+    // cout << "sum : " << sum << nl;
+    
+    i--;
+    while(i >= 0)
     {
-        int h,s,w;
-        cin >> h >> s >> w;
+        ll temp = sub((n[i] - '0')% 10, minus);
+        minus += temp;
+        sum += temp; 
+        sum++;
 
-        if(h >= H || h+s >= H+S) continue;
+        // cout << "sum : " << sum << nl;
+        i--;
 
-        v.push_back({w, {h,s}});
-        
-    }
-    sort(all(v));
-
-    // for(auto &i: v)
-    // {
-    //     cout << i.second.first << " " << i.second.second << " " << i.first << nl;
-    // }
-
-    int sum = 0;
-    int mx = v[v.size()-1].first;
-
-    for(int l = v.size()-2, r = v.size()-1; r >=0; r--)
-    {
-        sum += v[r].first;
-      //  cout << sum << nl;
-        int h = v[r].second.first,s = v[r].second.second;
-        while((h + v[l].second.first < H) && (h+s+v[l].second.first+v[l].second.second< H+S) && l >= 0 && r > l)
-        {
-            sum += v[l].first;
-            h += v[l].second.first;
-            s += v[l].second.second;
-            l--;
-        }
-        
-        mx = max(mx, sum);
-        sum = 0;
-        
     }
 
-    cout << mx << nl;
+    cout << sum << nl;
+
+
     
     return 0;
 }

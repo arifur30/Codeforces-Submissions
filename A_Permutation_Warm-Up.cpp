@@ -3,8 +3,8 @@ using namespace std;
 
 using ll = long long;
 using ull = unsigned long long;
-#define YES cout << "Yes\n"
-#define NO cout << "No\n"
+#define YES cout << "YES\n"
+#define NO cout << "NO\n"
 #define nl "\n"
 #define arrin(arr, n) for(ll i = 0; i < n; i++) cin>>arr[i]
 #define arrout(arr, n) for(ll i = 0; i < n; i++) cout<<arr[i]<<" ";cout<<nl
@@ -17,47 +17,49 @@ using ull = unsigned long long;
 #define MOD 1000000007
 #define all(x) x.begin(), x.end()
 
+ll sumOfEvenNumbers(ll n) {
+    return n * (n + 1);
+}
+
+
+ll sumOfOddNumbers(ll n) {
+    return n * n;
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
 
-    string s, T;
-    set <char > t;
-    cin >> s >> T;
-
-    for(auto c : T)
+    ll t;
+    cin>>t;
+    while (t--)
     {
-        t.insert(c);
-    }
-
-    bool flag = true;
-    for(ll i = s.size()-1; i >= 1; i--)
-    {
-        if(s[i] >= 'A' && s[i] <= 'Z')
+        ll n;
+        cin >> n;
+        // if(n == 2)
+        // {
+        //     cout << 2 << nl;
+        //     continue;
+        // }
+        if(n&1)
         {
-            if(t.find(s[i-1]) == t.end())
-            {
-                //cout << s[i-1];
-                flag = false;
-                break;
-            }
-            else continue;
+
+            cout << sumOfEvenNumbers((n-1)/2) +1 << nl;
         }
+
+        else
+        {
+            cout << sumOfOddNumbers((n+1)/2) +1 << nl;
+        }
+        
     }
-
-    if(flag ) YES;
-    else NO;
-
     
     return 0;
 }
 
 
-
-
-// .... . -.-- / ... .. .-.. . -. - / ..-. .- -. / --- ..-. / -- .. -. .
 
 
 // .... . -.-- / ... .. .-.. . -. - / ..-. .- -. / --- ..-. / -- .. -. .

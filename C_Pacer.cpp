@@ -3,8 +3,8 @@ using namespace std;
 
 using ll = long long;
 using ull = unsigned long long;
-#define YES cout << "Yes\n"
-#define NO cout << "No\n"
+#define YES cout << "YES\n"
+#define NO cout << "NO\n"
 #define nl "\n"
 #define arrin(arr, n) for(ll i = 0; i < n; i++) cin>>arr[i]
 #define arrout(arr, n) for(ll i = 0; i < n; i++) cout<<arr[i]<<" ";cout<<nl
@@ -23,41 +23,48 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    string s, T;
-    set <char > t;
-    cin >> s >> T;
-
-    for(auto c : T)
+    ll t;
+    cin>>t;
+    while (t--)
     {
-        t.insert(c);
-    }
+        
+        ll n, m, mx = 0;
+        cin >> n >> m;
+        ll a[n+1], b[n+1];
+        a[0] = b[0]= 0;
 
-    bool flag = true;
-    for(ll i = s.size()-1; i >= 1; i--)
-    {
-        if(s[i] >= 'A' && s[i] <= 'Z')
+        fr(i,n)
         {
-            if(t.find(s[i-1]) == t.end())
+            cin >> a[i+1] >> b[i+1];
+
+            if((a[i+1] - a[i])%2 != (abs(b[i+1] - b[i]))%2)
             {
-                //cout << s[i-1];
-                flag = false;
-                break;
+                mx += a[i+1] - a[i] - 1;
+               // cout << "here" << a[i+1] << " " << mx <<  nl;
             }
-            else continue;
+            else {
+                
+                mx += a[i+1] - a[i];
+                //cout << "there" << a[i+1] << " " << mx <<  nl;
+        
         }
+            
+
+        }
+
+      
+        if(m > a[n])
+        {
+            mx += m - a[n];
+        }
+
+        cout << mx << nl;
     }
-
-    if(flag ) YES;
-    else NO;
-
     
     return 0;
 }
 
 
-
-
-// .... . -.-- / ... .. .-.. . -. - / ..-. .- -. / --- ..-. / -- .. -. .
 
 
 // .... . -.-- / ... .. .-.. . -. - / ..-. .- -. / --- ..-. / -- .. -. .
